@@ -1,16 +1,24 @@
 <?php
 
 require 'config/database.php'; //FUNCTIONS TO ACCESS DATABASE
-?>
+include 'partials/header.php'; //PHP header CODE?
+include 'partials/navbar.php'; //PHP navbar CODE
+session_start();//Needed to use $_SESSION global variable
 
-<?php include 'partials/header.php' //PHP header CODE?>
-<?php include 'partials/navbar.php' //PHP navbar CODE?>
+?>
 
 
 <!--HTML CODE-->
 <h2 class="text-center mt-5 mb-3">SIGN IN</h2>
+
+<div class="alert alert-danger<?php echo !$_SESSION['formError'] ? 'd-none' : '' ?>" role="alert">
+  <?php echo $_SESSION['formError'] ?>
+</div>
 <div class="container w-50">
-  <form action="signupUpdate.php" method="post" >
+  <form action="signupUpdate.php" 
+        method="post" 
+        enctype="multipart/form-data"
+        novalidate> <!--Adding due to the input file-->
     <div class="mb-3">
       <!-- <label for="exampleFormControlInput1" class="form-label">First Name</label> -->
       <input type="text"
@@ -18,7 +26,9 @@ require 'config/database.php'; //FUNCTIONS TO ACCESS DATABASE
             id="exampleFormControlInput1" 
             name="firstname"
             placeholder="Introduce your first name">
+
     </div>
+    
     <div class="mb-3">
       <!-- <label for="exampleFormControlInput2" class="form-label">First Name</label> -->
       <input type="text"
@@ -58,6 +68,7 @@ require 'config/database.php'; //FUNCTIONS TO ACCESS DATABASE
              id="formFile"
              name="avatar"
              placeholder="Introduce your photograph">
+
     </div>
     
     <div class="mb-3">
