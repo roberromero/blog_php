@@ -9,15 +9,18 @@ session_start();//Needed to use $_SESSION global variable
 
 
 <!--HTML CODE-->
-<h2 class="text-center mt-5 mb-3">SIGN IN</h2>
+<h2 class="text-center mt-5 mb-3">SIGN UP</h2>
 
-<div class="alert alert-danger<?php echo !$_SESSION['formError'] ? 'd-none' : '' ?>" role="alert">
+<div class="alert alert-danger<?php echo !$_SESSION['formError'] ? 'd-none' : '' ?>" role="alert"> 
   <?php echo $_SESSION['formError'] ?>
+</div>
+<div class="alert alert-success<?php echo !$_SESSION['formSuccess'] ? 'd-none' : '' ?>" role="alert">
+<?php echo $_SESSION['formSuccess'] ?>
 </div>
 <div class="container w-50">
   <form action="signupUpdate.php" 
         method="post" 
-        enctype="multipart/form-data"
+        enctype="multipart/form-data" 
         novalidate> <!--Adding due to the input file-->
     <div class="mb-3">
       <!-- <label for="exampleFormControlInput1" class="form-label">First Name</label> -->
@@ -62,12 +65,19 @@ session_start();//Needed to use $_SESSION global variable
             placeholder="Introduce your password">
     </div>
     <div class="mb-3">
+      <!-- <label for="exampleFormControlInput5" class="form-label">First Name</label> -->
+      <input type="password"
+            class="form-control"
+            id="exampleFormControlInput5" 
+            name="cpassword"
+            placeholder="Confirm your password">
+    </div>
+    <div class="mb-3">
       <label for="formFile" class="form-label">Introduce your photograph</label>
       <input class="form-control"
              type="file"
              id="formFile"
-             name="avatar"
-             placeholder="Introduce your photograph">
+             name="avatar">
 
     </div>
     
