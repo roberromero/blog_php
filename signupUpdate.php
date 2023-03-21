@@ -1,23 +1,27 @@
-
-
 <?php
-session_start(); //Needed to use $_SESSION global variable
-$firstname = $lastname = $username = $email = $password = $avatar = "";
+//PENDING-> IN DATABASE CREATE A FUNCTION TO CHECK THAT USERNAME AND EMAIL DON'T EXIST
 
+
+require_once './config/database.php';
+session_start(); //Needed to use $_SESSION global variable
+$dataForm = [];//Associative array to store inputs info from $_POST 
+
+//TO CLEAR INPUTS
 function test_input($data) {
   $data = trim($data);
   $data = stripslashes($data);
   $data = htmlspecialchars($data);
   return $data;
 }
+//TO FILTER WE CAN ALSO USE THIS PHP FUNCTION
+// $firstname = filter_var($_POST['firsname'], FILTER_SANITIZE_SPECIAL_CHARS);
+// $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
 
+//TO RETURN TO SIGN UP PAGE
 function returnSignUpPage(){
   header('Location: signup.php');
   die();
 }
-
-//CREATE A FUNCTION TO CHECK THAT USERNAME AND EMAIL DON'T EXIST
-/////////////////////
 
 
 //VALIDATION
@@ -26,22 +30,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($_POST["firstname"])) {
     $_SESSION['formError'] = "First name is required";
     returnSignUpPage();
-  }elseif(strlen($_POST["firstname"]) > 20 ){//Check string lenght -> no more than 20 characters
-    $_SESSION['formError'] = "No more than 20 characters";
-    returnSignUpPage();
-  }else {
-    $firstname = test_input($_POST["firstname"]);
-  }
+    }elseif(strlen($_POST["firstname"]) > 20 ){//Check string lenght -> no more than 20 characters
+      $_SESSION['formError'] = "No more than 20 characters";
+      returnSignUpPage();
+    }else {
+      $dataForm['firstname'] = test_input($_POST["firstname"]);
+    }
   //LAST NAME VALIDATION
   if (empty($_POST["lastname"])) {
     $_SESSION['formError'] = "Last name is required";
     returnSignUpPage();
-  }elseif(strlen($_POST["lastname"]) > 20 ){//Check string lenght -> no more than 20 characters
-    $_SESSION['formError'] = "No more than 20 characters";
-    returnSignUpPage();
-  }else {
-    $lastname = test_input($_POST["lastname"]);
-  }
+    }elseif(strlen($_POST["lastname"]) > 20 ){//Check string lenght -> no more than 20 characters
+      $_SESSION['formError'] = "No more than 20 characters";
+      returnSignUpPage();
+    }else {
+      $dataForm['lastname'] = test_input($_POST["lastname"]);
+    }
   //USER NAME VALIDATION
   if (empty($_POST["username"])) {
     $_SESSION['formError'] = "Username is required";
@@ -49,8 +53,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }elseif(strlen($_POST["username"]) > 20 ){//Check string lenght -> no more than 20 characters
       $_SESSION['formError'] = "No more than 20 characters";
       returnSignUpPage();
-    }else {
-      $username = test_input($_POST["username"]);
+    }elseif(checkUsernameEmail(test_input($_POST["username"]), test_input($_POST["email"]))){
+      //CHECKING IF USERNAME OR EMAIL EXIST USING A FUNCTION from "database.php" USING A "SELECT..." statement
+      $_SESSION['formError'] = "Username or Email already exist";
+      returnSignUpPage();
+    }else{
+      $dataForm['username'] = test_input($_POST["username"]);
     }
 
   //EMAIL ADDRESS VALIDATION
@@ -59,7 +67,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     returnSignUpPage();
     } else {
         if (filter_var(test_input($_POST["email"]), FILTER_VALIDATE_EMAIL)) {
-          $email = test_input($_POST["email"]);
+          $dataForm['email'] = test_input($_POST["email"]);
+
           }else {
           $_SESSION['formError'] = "Email address format is not valid ";
           returnSignUpPage();
@@ -86,7 +95,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           returnSignUpPage();
       }
       else{
+        /* User's password. */
         $password = test_input($_POST["password"]);
+        /* Secure password hash. */
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+        $dataForm['password'] = $hash;
       }
     }elseif(empty($_POST["password"])){
           $_SESSION['formError'] = "Please Enter Your Password!";
@@ -100,10 +113,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   
   
     //FILE VALIDATION
-  if (empty($_FILES["avatar"])) {
+    if (empty($_FILES["avatar"])) {
   $_SESSION['formError'] = "Avatar is required";
   returnSignUpPage();
-  }else {
+    }else {
       $target_dir = "images/";
       $file_name = time();
       $uploadCheck = false;
@@ -114,7 +127,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $file_format = $file["type"];
       $file_format = strtolower(substr(strrchr($file_format, '/'), 1));
       if($file_format === "png" || $file_format === "jpge" || $file_format === "jpg"){
-        echo "Image Format Valid";
         $uploadCheck = true;
       }else{
         $uploadCheck = false;
@@ -122,11 +134,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         returnSignUpPage();
 
       }
-
       //CHECK SIZE
-     
       if($file["size"] < 204800){
-        echo "File size supported";
         $uploadCheck = true;
       }else{
         $uploadCheck = false;
@@ -137,8 +146,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       if($uploadCheck){
         session_unset();//Remove previous variables -> the variable removed is "formError"
         move_uploaded_file($file["tmp_name"], $target_dir . $file_name . "." . $file_format);
-        $_SESSION['formSuccess'] = "Sign Up Success";
+        $dataForm['avatar'] = $file_name . "." . $file_format;
+        saveNewUser($dataForm);//Saves new user in the data base
+        $_SESSION['formSuccess'] = "Sign Up Success. Please, log in";
         returnSignUpPage();
+      
       }else{
         $_SESSION['formError'] = "Error downloading this file";
         returnSignUpPage();
@@ -148,11 +160,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     }
 
-   
-    // echo '<pre>';
-    //   var_dump($_FILES);
-    // echo '</pre>';
+  
   }
+
 
 
 

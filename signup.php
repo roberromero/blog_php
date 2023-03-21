@@ -7,22 +7,26 @@ session_start();//Needed to use $_SESSION global variable
 
 ?>
 
-
 <!--HTML CODE-->
-<h2 class="text-center mt-5 mb-3">SIGN UP</h2>
+<h2 class="text-center mt-5">SIGN UP</h2>
 
-<div class="alert alert-danger<?php echo !$_SESSION['formError'] ? 'd-none' : '' ?>" role="alert"> 
-  <?php echo $_SESSION['formError'] ?>
-</div>
-<div class="alert alert-success<?php echo !$_SESSION['formSuccess'] ? 'd-none' : '' ?>" role="alert">
-<?php echo $_SESSION['formSuccess'] ?>
-</div>
+
 <div class="container w-50">
+
+  <div class="position-relative pb-5">
+    <div class="position-absolute w-100 alert alert-danger <?php echo !$_SESSION['formError'] ? 'invisible' : '' ?>" role="alert"> 
+      <?php echo $_SESSION['formError'] ?>
+    </div>
+    <div class="position-absolute w-100 alert alert-success <?php echo !$_SESSION['formSuccess'] ? 'invisible' : '' ?>" role="alert">
+    <?php echo $_SESSION['formSuccess'] ?>
+    </div>
+  </div>
   <form action="signupUpdate.php" 
         method="post" 
         enctype="multipart/form-data" 
+        class="pb-3" 
         novalidate> <!--Adding due to the input file-->
-    <div class="mb-3">
+    <div class="mb-3 pt-4">
       <!-- <label for="exampleFormControlInput1" class="form-label">First Name</label> -->
       <input type="text"
             class="form-control"
@@ -91,7 +95,7 @@ session_start();//Needed to use $_SESSION global variable
     </div>
     <button type="submit" class="btn btn-success">Sign Up</button>
   </form>
-  
+  <small>Do you already have an account? <a href="signin.php">Sign in</a></small>
 </div>
 
 <?php include 'partials/footer.php' //PHP footer CODE ?>

@@ -1,4 +1,7 @@
 <?php
+
+use function PHPSTORM_META\type;
+
 require 'config/constants.php';
 
 
@@ -13,20 +16,37 @@ if ($conn->connect_error) {
 }
 return $conn;
 }
-function saveNewUser(){
+
+function saveNewUser($dataForm){
     $conn = connectDatabase();
+    $fistname = $dataForm['firstname'];
+    $lastname = $dataForm['lastname'];
+    $username = $dataForm['username'];
+    $email = $dataForm['email'];
+    $password = $dataForm['password'];
+    $avatar = $dataForm['avatar'];
+    $is_admin = 0;
+
     $sql = "INSERT INTO users(firstname, lastname, username, email, password, avatar, is_admin) 
-    VALUES ('John','White','JohnW','john@gmail.com','22ddaa','imagenBlog1.png','0')";
+    VALUES ('$fistname','$lastname','$username','$email','$password','$avatar', '$is_admin')";
     if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
+        // echo "New record created successfully";
       } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        // echo "Error: " . $sql . "<br>" . $conn->error;
       }
-      
       $conn->close();
 }
-
-
+function checkUsernameEmail($username, $email){
+  $conn = connectDatabase();
+  $sql = "SELECT * FROM users WHERE username='$username' OR email='$email' ";
+  $res = $conn->query($sql);
+  return mysqli_num_rows($res);
+  //it returns:
+  //- true if any row has been found
+  //- false if rows no found
+  $conn->close();
+  
+}
 
 
 
