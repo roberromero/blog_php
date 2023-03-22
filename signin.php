@@ -3,22 +3,23 @@
 require 'config/database.php'; //FUNCTIONS TO ACCESS DATABASE
 include 'partials/header.php'; //PHP header CODE?
 include 'partials/navbar.php'; //PHP navbar CODE
-
+session_start();
 
 ?>
-
 
 
 <h2 class="text-center mt-5">SIGN IN</h2>
 <div class="container w-50">
 
   <div class="position-relative pb-5">
-    <div class="position-absolute w-100 alert alert-danger" role="alert">
+    <div class=" position-absolute w-100 alert alert-danger <?php echo !$_SESSION['formErr'] ? 'invisible' : '' ?>" role="alert">
+    <?php echo $_SESSION['formErr']?>
     </div>
-    <div class="position-absolute w-100 alert alert-success" role="alert">
+    <div class=" position-absolute w-100 alert alert-success <?php echo !$_SESSION['formValid'] ? 'invisible' : '' ?>" role="alert">
+        <?php echo $_SESSION['formValid']?>
     </div>
   </div>
-  <form action="signinUpdate.php" 
+  <form action="signin-logic.php" 
         method="post" 
         class="pb-3" 
         novalidate>
@@ -27,7 +28,7 @@ include 'partials/navbar.php'; //PHP navbar CODE
             class="form-control"
             id="exampleFormControlInput1" 
             name="username" 
-            value=""
+            value="<?php echo $_SESSION['username']?>"
             placeholder="Introduce your Username or Email">
 
     </div>
@@ -40,19 +41,9 @@ include 'partials/navbar.php'; //PHP navbar CODE
             value=""
             placeholder="Introduce your Password">
     </div>
-
-<!--     
-    <div class="mb-3">
-      <input type="hidden"
-            class="form-control"
-            id="exampleFormControlInput7" 
-            name="is_admin"
-            value="0"
-            >
-    </div> -->
     <button type="submit" class="btn btn-success">Sign In</button>
   </form>
-  <small>Do you already have an account? <a href="signup.php">Sign in</a></small>
+  <small>Don't you have an account? <a href="signup.php">Sign Up</a></small>
 </div>
 
 

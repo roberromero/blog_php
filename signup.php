@@ -21,7 +21,7 @@ session_start();//Needed to use $_SESSION global variable
     <?php echo $_SESSION['formSuccess'] ?>
     </div>
   </div>
-  <form action="signupUpdate.php" 
+  <form action="signup-logic.php" 
         method="post" 
         enctype="multipart/form-data" 
         class="pb-3" 
