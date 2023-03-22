@@ -2,7 +2,7 @@
 
 require 'config/database.php'; //FUNCTIONS TO ACCESS DATABASE
 
-$res = checkUsernameEmail("robertoomero", "ohn@gmail.com");
+$res = checkUsernameEmail("robertoomero", "john@gmail.com");
 if($res){
     echo "existen en la BBDD";
 }else{

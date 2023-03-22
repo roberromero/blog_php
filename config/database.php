@@ -47,7 +47,25 @@ function checkUsernameEmail($username, $email){
   $conn->close();
   
 }
+//Receives two parameters, column name and data
+function findColumn($columnName, $data){
+  $conn = connectDatabase();
+  $sql = "SELECT * FROM users WHERE $columnName= '$data'";
+  $res = $conn->query($sql);
+  return mysqli_num_rows($res);
+  //it returns:
+  //- true if any row has been found
+  //- false if rows no found
+  $conn->close();
+}
 
-
+function findPassword($column, $data){
+  $conn = connectDatabase();
+  $sql = "SELECT password FROM users WHERE $column= '$data'";
+  $res = $conn->query($sql);
+  return mysqli_fetch_row($res);
+  
+  $conn->close();
+}
 
 ?>

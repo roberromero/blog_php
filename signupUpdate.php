@@ -5,8 +5,9 @@
 require_once './config/database.php';
 session_start(); //Needed to use $_SESSION global variable
 $dataForm = [];//Associative array to store inputs info from $_POST 
+$_SESSION['signup-data'] = null;
 
-//TO CLEAR INPUTS
+//TO CLEAR INPUTS///////////////////////////////////////////////////////////
 function test_input($data) {
   $data = trim($data);
   $data = stripslashes($data);
@@ -19,6 +20,7 @@ function test_input($data) {
 
 //TO RETURN TO SIGN UP PAGE
 function returnSignUpPage(){
+  $_SESSION['signup-data'] = $_POST;
   header('Location: signup.php');
   die();
 }
@@ -149,7 +151,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $dataForm['avatar'] = $file_name . "." . $file_format;
         saveNewUser($dataForm);//Saves new user in the data base
         $_SESSION['formSuccess'] = "Sign Up Success. Please, log in";
-        returnSignUpPage();
+        header('Location: signup.php');
+        die();
       
       }else{
         $_SESSION['formError'] = "Error downloading this file";

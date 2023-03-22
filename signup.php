@@ -31,7 +31,8 @@ session_start();//Needed to use $_SESSION global variable
       <input type="text"
             class="form-control"
             id="exampleFormControlInput1" 
-            name="firstname"
+            name="firstname" 
+            value="<?php echo $_SESSION['signup-data']['firstname']; ?>"
             placeholder="Introduce your first name">
 
     </div>
@@ -41,7 +42,8 @@ session_start();//Needed to use $_SESSION global variable
       <input type="text"
             class="form-control"
             id="exampleFormControlInput2" 
-            name="lastname"
+            name="lastname" 
+            value="<?php echo $_SESSION['signup-data']['lastname']; ?>"
             placeholder="Introduce your last name">
     </div>
     <div class="mb-3">
@@ -49,7 +51,8 @@ session_start();//Needed to use $_SESSION global variable
       <input type="text"
             class="form-control"
             id="exampleFormControlInput3" 
-            name="username"
+            name="username" 
+            value="<?php echo $_SESSION['signup-data']['username']; ?>"
             placeholder="Introduce your username">
     </div>
     <div class="mb-3">
@@ -57,7 +60,8 @@ session_start();//Needed to use $_SESSION global variable
       <input type="email"
             class="form-control"
             id="exampleFormControlInput4" 
-            name="email"
+            name="email" 
+            value="<?php echo $_SESSION['signup-data']['email']; ?>" 
             placeholder="Introduce your email address">
     </div>
     <div class="mb-3">
@@ -65,14 +69,14 @@ session_start();//Needed to use $_SESSION global variable
       <input type="password"
             class="form-control"
             id="exampleFormControlInput5" 
-            name="password"
+            name="password" 
             placeholder="Introduce your password">
     </div>
     <div class="mb-3">
-      <!-- <label for="exampleFormControlInput5" class="form-label">First Name</label> -->
+      <!-- <label for="exampleFormControlInput6" class="form-label">First Name</label> -->
       <input type="password"
             class="form-control"
-            id="exampleFormControlInput5" 
+            id="exampleFormControlInput6" 
             name="cpassword"
             placeholder="Confirm your password">
     </div>
