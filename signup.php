@@ -1,8 +1,6 @@
 <?php
 
-require 'config/database.php'; //FUNCTIONS TO ACCESS DATABASE
 include 'partials/header.php'; //PHP header CODE?
-include 'partials/navbar.php'; //PHP navbar CODE
 session_start();//Needed to use $_SESSION global variable
 
 ?>
@@ -99,7 +97,7 @@ session_start();//Needed to use $_SESSION global variable
     </div>
     <button type="submit" class="btn btn-success">Sign Up</button>
   </form>
-  <small>Do you already have an account? <a href="signin.php">Sign in</a></small>
+  <small>Do you already have an account? <a href="<?php echo ROOT_URL?>signin.php">Sign in</a></small>
 </div>
 
-<?php include 'partials/footer.php' //PHP footer CODE ?>
+<?php include "partials/footer.php" //PHP footer CODE ?>

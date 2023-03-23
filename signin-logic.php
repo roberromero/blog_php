@@ -48,6 +48,8 @@ function verifyPassword($column, $data, $password){
                 
                 if($_SESSION['passwordValidated']){
                     $_SESSION['formValid'] = "Signed in successfully. Please, log in";
+                    //store users INFO in "user-data"
+                    $_SESSION['user-data'] = getUserDetails($data);
                 }else{
                    $_SESSION['formErr'] = "Correct email - Wrong password";
                    $_SESSION['username'] = test_input($_POST["username"]); 
@@ -70,8 +72,11 @@ function verifyPassword($column, $data, $password){
                 
                 if($_SESSION['passwordValidated']){
                     $_SESSION['formValid'] = "Signed in successfully. Please, log in";
+                    //store users INFO in "user-data"
+                    $_SESSION['user-data'] = getUserDetails($data);
                 }else{
-                   $_SESSION['formErr'] = "Correct username - Wrong password"; 
+                   $_SESSION['formErr'] = "Correct username - Wrong password";
+                   $_SESSION['username'] = test_input($_POST["username"]); 
                 }
                 returnSignInPage();
         }else{
