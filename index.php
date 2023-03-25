@@ -16,7 +16,7 @@ $featuredPost = getPosts("1");
    
    <div class="container" style="width:28rem;">
     <div class="card text-center" >
-        <img src="./images/1.jpg" class="card-img-top" alt="...">
+        <img src="./images/<?php echo $featuredPost['thumbnail'] ?>" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title" style="color:black;"><?php echo $featuredPost['title']?></h5>
             <p class="card-text" style="color:black;"><?php echo $featuredPost['body']?></p>
@@ -44,7 +44,7 @@ $featuredPost = getPosts("1");
 
 
 <!--HTML CODE-->
-<form action="<?php echo ROOT_URL ?>dashboard/dashboard.php">
+<form action="<?php echo ROOT_URL ?>dashboard.php">
     <button  class="btn btn-success">CLICK ME</button>
 </form>
 

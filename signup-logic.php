@@ -128,13 +128,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
       $file_format = $file["type"];
       $file_format = strtolower(substr(strrchr($file_format, '/'), 1));
-      if($file_format === "png" || $file_format === "jpge" || $file_format === "jpg"){
+      if($file_format === "png" || $file_format === "jpeg" || $file_format === "jpg"){
         $uploadCheck = true;
       }else{
         $uploadCheck = false;
         $_SESSION['formError'] = "Sorry, only JPG, JPEG & PNG files are allowed.";
         returnSignUpPage();
-
       }
       //CHECK SIZE
       if($file["size"] < 204800){
