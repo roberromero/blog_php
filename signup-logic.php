@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
   //PASSWORD VALIDATION
-  if(!empty($_POST["password"]) && ($_POST["password"] == $_POST["cpassword"])) {
+  if(!empty($_POST["password"]) || ($_POST["password"] == $_POST["cpassword"]) && strlen($_POST["password"]) !== 0 ) {
    
       if (strlen($_POST["password"]) < '8') {
         $_SESSION['formError'] = "Your Password Must Contain At Least 8 Characters!";
@@ -116,8 +116,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   
     //FILE VALIDATION
     if (empty($_FILES["avatar"])) {
-  $_SESSION['formError'] = "Avatar is required";
-  returnSignUpPage();
+      $_SESSION['formError'] = "Avatar is required";
+      returnSignUpPage();
     }else {
       $target_dir = "images/";
       $file_name = time();
