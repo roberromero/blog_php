@@ -101,7 +101,7 @@ function insertPost($data){
   
   $conn = connectDatabase();
   $sql = "INSERT INTO posts (title, body, thumbnail, category_id, author_id, is_featured) 
-          VALUES ('$title', '$body', '$thumbnail', '$category_id', '$author_id', '$is_featured' )";
+          VALUES ('$title', '$body', '$thumbnail', '$category_id', '$author_id', '$is_featured')";
   $res = $conn->query($sql);
   return $res;
 } 

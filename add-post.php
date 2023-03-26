@@ -2,11 +2,14 @@
 session_start();
 
 ?>
-<p>
-<?php echo '<pre>'?>
-  <?php var_dump($_SESSION);?>
-<?php echo '</pre>' ?>
-</p>
+<div class="position-relative pb-5">
+  <div class="position-absolute w-100 alert alert-danger <?php echo !$_SESSION['addFormErr'] ? 'invisible' : '' ?>" role="alert"> 
+    <?php echo $_SESSION['addFormErr'] ?>
+  </div>
+  <div class="position-absolute w-100 alert alert-success <?php echo !$_SESSION['postSuccess'] ? 'invisible' : '' ?>" role="alert">
+  <?php echo $_SESSION['postSuccess'] ?>
+  </div>
+</div>
 <div class="container w-50">
   <form action="add-post-logic.php" 
         method="post" 
