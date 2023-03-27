@@ -115,7 +115,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   
   
     //FILE VALIDATION
-    if (empty($_FILES["avatar"])) {
+    if ($_FILES['avatar']['name'] == "") {
       $_SESSION['formError'] = "Avatar is required";
       returnSignUpPage();
     }else {

@@ -1,13 +1,17 @@
 <?php 
 session_start();
-
+// echo '<pre>';
+// var_dump($_SESSION);
+// echo '</pre>';
 ?>
 <div class="position-relative pb-5">
   <div class="position-absolute w-100 alert alert-danger <?php echo !$_SESSION['addFormErr'] ? 'invisible' : '' ?>" role="alert"> 
     <?php echo $_SESSION['addFormErr'] ?>
   </div>
-  <div class="position-absolute w-100 alert alert-success <?php echo !$_SESSION['postSuccess'] ? 'invisible' : '' ?>" role="alert">
-  <?php echo $_SESSION['postSuccess'] ?>
+  <div class="position-absolute w-100 alert alert-success <?php echo !$_SESSION['postSuccess'] ? 'invisible' : '' ?>" id="postAddedAlert" role="alert">
+  <?php echo $_SESSION['postSuccess'];
+        unset($_SESSION['postSuccess']);
+  ?>
   </div>
 </div>
 <div class="container w-50">
@@ -15,6 +19,7 @@ session_start();
         method="post" 
         enctype="multipart/form-data" 
         class="pb-3" 
+        id="postForm" 
         novalidate> <!--Adding due to the input file-->
     <div class="mb-3 pt-4">
       <input type="text"
@@ -46,3 +51,11 @@ session_start();
     <button type="submit" class="btn btn-success">Add New Post</button>
   </form>
 </div>
+<!-- <script>
+  const postForm = document.getElementById("postForm");
+  function saludo(e){
+    const postAddedAlert = document.getElementsById("postAddedAlert").classList;
+    postAddedAlert.add("invisible");
+  }
+  postForm.addEventListener("click", saludo);
+</script> -->

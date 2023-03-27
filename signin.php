@@ -2,7 +2,6 @@
 
 include_once 'partials/header.php'; //PHP header CODE?
 session_start();
-
 ?>
 
 <h2 class="text-center mt-5">SIGN IN</h2>

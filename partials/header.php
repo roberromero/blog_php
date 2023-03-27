@@ -56,7 +56,7 @@ session_start();
           </button>
           <ul class="dropdown-menu dropdown-menu-dark" style="left: -55px;">
             <li><a class="dropdown-item" href="<?php echo ROOT_URL?>dashboard.php">Dashboard</a></li>
-            <li><a class="dropdown-item" href="#">Logout</a></li>
+            <li><a class="dropdown-item" href="<?php echo ROOT_URL?>logout.php">Logout</a></li>
           </ul>
         </li>
       </ul>
