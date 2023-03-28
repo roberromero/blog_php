@@ -5,6 +5,7 @@ var_dump($_SESSION);
 echo '</pre>';
 
 if (isset($_SESSION['user-data'])):
+$posts = getPostsByAuthor($_SESSION['user-data']['id']);
 ?>
 <table class="table" style="color:white;">
   <thead>
@@ -16,14 +17,22 @@ if (isset($_SESSION['user-data'])):
     </tr>
   </thead>
   <tbody>
-    <!--LOOP PARA VOLCAR POSTS-->
-    <tr>
-      <td>Titulo post</td>
-      <td>Categoria post</td>
-      <td><button type="button" class="btn btn-primary">Edit</button></td>
-      <td><button type="button" class="btn btn-danger">Delete</button></td>
-    </tr>
+    <!--CHECK IF THERE ARE ANY POSTS-->
+    <?php if(empty($posts)){ ?>
+      <div class="alert alert-danger" role="alert">
+         You have no posts published!
+      </div>
+    <?php }else {
+      foreach($posts as $post => $value):?><!--LOOP TO SHOW POSTS-->
+        <tr>
+          <td><?php echo $value['title']?></td>
+          <td><?php echo $value['category_id']?></td>
+          <!--SENDING ID THROUGH BROWSER "href" ($_GET METHOD)-->
+          <td><a class="btn btn-primary" href="manage-post-logic.php?actionPost=edit&id=<?php echo $value['id']?>">Edit</a></td>
+          <td><a class="btn btn-danger" href="manage-post-logic.php?actionPost=delete">Delete</a></td>
+        </tr>
+     <?php endforeach;} ?> 
   </tbody>
 </table>
 
-<?php endif;?>
+    <?php endif;?>

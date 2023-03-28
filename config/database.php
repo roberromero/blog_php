@@ -106,4 +106,36 @@ function insertPost($data){
   return $res;
 } 
 
+//To grab posts from a specific author
+function getPostsByAuthor($author_id){
+  $conn = connectDatabase();
+  $sql = "SELECT * FROM posts WHERE author_id=$author_id";
+  $res = $conn->query($sql);
+  return mysqli_fetch_all($res, MYSQLI_ASSOC);
+}
+
+//To grab post info from ID
+function getSpecificPostById($id){
+  $conn = connectDatabase();
+  $sql = "SELECT title, body, category_id FROM posts WHERE id=$id";
+  $res = $conn->query($sql);
+  return mysqli_fetch_assoc($res);
+
+}
+
+//to update a post
+
+function updatePost($data){
+  $title = $data['title'];
+  $body = $data['body'];
+  $thumbnail = $data['thumbnail'];
+  $category_id = $data['category_id'];
+  $id = $data['id'];
+
+  $conn = connectDatabase();
+  $sql = "UPDATE posts SET title='$title', body='$body', thumbnail='$thumbnail', category_id='$category_id' WHERE id='$id'";
+  $res = $conn->query($sql);
+  return $res;
+}
+
 ?>

@@ -5,7 +5,9 @@ session_start();
 <div class="container mt-5">
   <div class="position-relative pb-5">
     <div class="position-absolute w-100 alert alert-danger <?php echo !$_SESSION['addFormErr'] ? 'invisible' : '' ?>" role="alert"> 
-      <?php echo $_SESSION['addFormErr'] ?>
+      <?php echo $_SESSION['addFormErr'];
+            unset($_SESSION['addFormErr']);
+      ?>
     </div>
     <div class="position-absolute w-100 alert alert-success <?php echo !$_SESSION['postSuccess'] ? 'invisible' : '' ?>" id="postAddedAlert" role="alert">
     <?php echo $_SESSION['postSuccess'];
