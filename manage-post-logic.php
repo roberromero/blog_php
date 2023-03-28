@@ -4,13 +4,9 @@ require_once './config/database.php';
 
 $id = $_GET['id'];
 $post = getSpecificPostById($id);
-var_dump($post);
-switch ($_GET['actionPost']) {
-    case 'edit':
-      echo "editar el post";
-      echo $id;
-?>
-      <div class="container mt-5">
+if($_GET['actionPost'] === "edit") {?>
+    <!--EDIT HTML SECTION  -->  
+    <div class="container mt-5">
         <div class="position-relative pb-5">
             <div class="position-absolute w-100 alert alert-danger <?php echo !$_SESSION['addFormErr'] ? 'invisible' : '' ?>" role="alert"> 
             <?php echo $_SESSION['addFormErr'];
@@ -69,17 +65,12 @@ switch ($_GET['actionPost']) {
           </div>
       </form>
       
-    </div>
-
-
-
-<?php
-      break;
-    case 'delete':
-      echo "borrar el post";
-      break;
-    default:
-      echo "variable no definida";
-  }
-include 'partials/footer.php' //PHP footer CODE
+    </div>    
+  <?php }elseif($_GET['actionPost'] === "delete"){
+    deletePost($id);
+    header('Location:' . getenv('HTTP_REFERER'));
+    die();
+  } ?> 
+<?php 
+include 'partials/footer.php'; //PHP footer CODE
 ?>

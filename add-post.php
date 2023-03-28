@@ -2,7 +2,6 @@
 session_start();
 
 ?>
-<div class="container mt-5">
   <div class="position-relative pb-5">
     <div class="position-absolute w-100 alert alert-danger <?php echo !$_SESSION['addFormErr'] ? 'invisible' : '' ?>" role="alert"> 
       <?php echo $_SESSION['addFormErr'];
@@ -50,12 +49,3 @@ session_start();
       </div>
       <button type="submit" class="btn btn-success">Add New Post</button>
   </form>
-</div>
-<!-- <script>
-  const postForm = document.getElementById("postForm");
-  function saludo(e){
-    const postAddedAlert = document.getElementsById("postAddedAlert").classList;
-    postAddedAlert.add("invisible");
-  }
-  postForm.addEventListener("click", saludo);
-</script> -->

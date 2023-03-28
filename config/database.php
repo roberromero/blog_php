@@ -138,4 +138,12 @@ function updatePost($data){
   return $res;
 }
 
+//To delete specific post by ID
+function deletePost($id){
+  $conn = connectDatabase();
+  $sql = "DELETE FROM posts WHERE id='$id'";
+  $res = $conn->query($sql);
+  return $res;
+}
+
 ?>

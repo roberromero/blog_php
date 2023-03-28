@@ -3,9 +3,6 @@ require_once 'config/database.php';
 session_start();
 ?>
 
-<?php //echo '<pre>'?>
-  <?php //var_dump($_FILES["thumbnail"]);?>
-<?php //echo '</pre>' ?>
 
 <?php 
 //FUNCTIONS
@@ -50,7 +47,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $postData['is_featured'] = "0";
 
         
-    //FILESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS copiar todo de signup
     //FILE VALIDATION
     if ($_FILES['thumbnail']['name'] == "") {
         $_SESSION['addFormErr'] = "Photo is required.";

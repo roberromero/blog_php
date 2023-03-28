@@ -1,11 +1,7 @@
 <?php
 require_once "./config/database.php";
 session_start();
-// $archivo = $_FILES;
-// $data['author_id'] = $_SESSION['user-data']['id'];
-// echo '<pre>';
-// var_dump($archivo);
-// echo '</pre>';
+
 
 
 
@@ -17,7 +13,6 @@ function test_input($data) {
     return $data;
   }
   function returnManagePostPage(){
-    //   $_SESSION['form-data'] = $_POST;
       header('Location:' . getenv('HTTP_REFERER'));
       die();
     }
@@ -100,6 +95,4 @@ function test_input($data) {
               
   }
 
-
-echo $res;
 ?>
