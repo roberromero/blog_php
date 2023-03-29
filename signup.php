@@ -31,7 +31,7 @@ session_start();//Needed to use $_SESSION global variable
             id="exampleFormControlInput1" 
             name="firstname" 
             value="<?php echo $_SESSION['signup-data']['firstname']; ?>"
-            placeholder="Introduce your first name">
+            placeholder="First name">
 
     </div>
     
@@ -42,7 +42,7 @@ session_start();//Needed to use $_SESSION global variable
             id="exampleFormControlInput2" 
             name="lastname" 
             value="<?php echo $_SESSION['signup-data']['lastname']; ?>"
-            placeholder="Introduce your last name">
+            placeholder="Last name">
     </div>
     <div class="mb-3">
       <!-- <label for="exampleFormControlInput3" class="form-label">Username</label> -->
@@ -51,7 +51,7 @@ session_start();//Needed to use $_SESSION global variable
             id="exampleFormControlInput3" 
             name="username" 
             value="<?php echo $_SESSION['signup-data']['username']; ?>"
-            placeholder="Introduce your username">
+            placeholder="Username">
     </div>
     <div class="mb-3">
       <!-- <label for="exampleFormControlInput4" class="form-label">Email Address</label> -->
@@ -60,7 +60,7 @@ session_start();//Needed to use $_SESSION global variable
             id="exampleFormControlInput4" 
             name="email" 
             value="<?php echo $_SESSION['signup-data']['email']; ?>" 
-            placeholder="Introduce your email address">
+            placeholder="Email address">
     </div>
     <div class="mb-3">
       <!-- <label for="exampleFormControlInput5" class="form-label">First Name</label> -->
@@ -68,7 +68,7 @@ session_start();//Needed to use $_SESSION global variable
             class="form-control"
             id="exampleFormControlInput5" 
             name="password" 
-            placeholder="Introduce your password">
+            placeholder="Password">
     </div>
     <div class="mb-3">
       <!-- <label for="exampleFormControlInput6" class="form-label">First Name</label> -->
@@ -79,7 +79,7 @@ session_start();//Needed to use $_SESSION global variable
             placeholder="Confirm your password">
     </div>
     <div class="mb-3">
-      <label for="formFile" class="form-label">Introduce your photograph</label>
+      <label for="formFile" class="form-label">Photograph</label>
       <input class="form-control"
              type="file"
              id="formFile"

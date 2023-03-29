@@ -4,6 +4,7 @@ require_once './config/database.php';
 
 $id = $_GET['id'];
 $post = getSpecificPostById($id);
+
 if($_GET['actionPost'] === "edit") {?>
     <!--EDIT HTML SECTION  -->  
     <div class="container mt-5">
@@ -61,13 +62,14 @@ if($_GET['actionPost'] === "edit") {?>
            </div>
           <div class="w-100">
             <button type="submit" class="btn btn-success">Modify Post</button>
-            <a class="btn btn-primary" href="./dashboard.php" role="button" style="float: right;">Back</a>
+            <a class="btn btn-primary" href="./manage-post.php" role="button" style="float: right;">Back</a>
           </div>
       </form>
       
     </div>    
   <?php }elseif($_GET['actionPost'] === "delete"){
-    deletePost($id);
+    $filename = $post['thumbnail'];
+    deletePost($id,$filename);
     header('Location:' . getenv('HTTP_REFERER'));
     die();
   } ?> 

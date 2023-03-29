@@ -117,7 +117,7 @@ function getPostsByAuthor($author_id){
 //To grab post info from ID
 function getSpecificPostById($id){
   $conn = connectDatabase();
-  $sql = "SELECT title, body, category_id FROM posts WHERE id=$id";
+  $sql = "SELECT title, body, category_id, thumbnail, author_id FROM posts WHERE id=$id";
   $res = $conn->query($sql);
   return mysqli_fetch_assoc($res);
 
@@ -139,10 +139,12 @@ function updatePost($data){
 }
 
 //To delete specific post by ID
-function deletePost($id){
+function deletePost($id,$filename){
   $conn = connectDatabase();
   $sql = "DELETE FROM posts WHERE id='$id'";
   $res = $conn->query($sql);
+  $filename = './images/'.$filename; //To delete a file
+  unlink($filename);
   return $res;
 }
 

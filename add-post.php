@@ -1,7 +1,32 @@
 <?php 
+include_once 'partials/header.php'; //PHP header CODE?
 session_start();
 
 ?>
+
+
+<?php if (isset($_SESSION['user-data'])):?>
+<!--list to navegate dashboard -->
+  <div class="container">
+    <div class="container mt-3">
+      <div class="list-group" id="manageOptions">
+        <a  class="list-group-item list-group-item-action"
+            id="manage" 
+            aria-current="true" 
+            style="cursor:pointer;" 
+            href="<?php echo ROOT_URL ?>manage-post.php ">
+            Manage Posts
+          </a>
+        <a  class="list-group-item list-group-item-action active" 
+            id="create" 
+            aria-current="true" 
+            style="cursor:pointer;" 
+            >
+              Create New Post
+        </a>  
+      </div>
+    </div>
+<div class="container mt-3" id="createTable">
   <div class="position-relative pb-5">
     <div class="position-absolute w-100 alert alert-danger <?php echo !$_SESSION['addFormErr'] ? 'invisible' : '' ?>" role="alert"> 
       <?php echo $_SESSION['addFormErr'];
@@ -49,3 +74,7 @@ session_start();
       </div>
       <button type="submit" class="btn btn-success">Add New Post</button>
   </form>
+</div>
+  <?php endif;?>
+
+<?php include 'partials/footer.php' //PHP footer CODE ?>

@@ -3,8 +3,6 @@ require_once "./config/database.php";
 session_start();
 
 
-
-
 //FUNCTIONS
 function test_input($data) {
     $data = trim($data);

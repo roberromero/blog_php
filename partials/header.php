@@ -18,7 +18,7 @@ session_start();
 ?>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation" id="dropDownButton" onclick="displayNone">
       <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" href="<?php echo ROOT_URL ?>">
@@ -27,15 +27,12 @@ session_start();
       </svg>
     </a>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100" style="justify-content:space-evenly; padding-right: 350px;">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100">
         <li class="nav-item">
           <a class="nav-link active" href="#">Blog</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" href="#">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Services</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" href="#">Contact</a>
@@ -54,8 +51,8 @@ session_start();
           <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             <?php echo $_SESSION['user-data']['firstname'] ?>
           </button>
-          <ul class="dropdown-menu dropdown-menu-dark" style="left: -55px;">
-            <li><a class="dropdown-item" href="<?php echo ROOT_URL?>dashboard.php">Dashboard</a></li>
+          <ul class="dropdown-menu dropdown-menu-dark position-absolute" style="left: -55px;">
+            <li><a class="dropdown-item" href="<?php echo ROOT_URL?>manage-post.php">Dashboard</a></li>
             <li><a class="dropdown-item" href="<?php echo ROOT_URL?>logout.php">Logout</a></li>
           </ul>
         </li>
@@ -64,3 +61,12 @@ session_start();
     <?php endif; ?>
   </div>
 </nav>
+
+<script>
+const dropDownButton = document.getElementById('dropDownButton');
+const dropDownPersonal = document.getElementById('navbarNavDarkDropdown');
+dropDownButton.addEventListener('click', displayNone);
+function displayNone(){
+  dropDownPersonal.classList.toggle('d-none');
+}
+</script>

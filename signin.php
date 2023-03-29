@@ -34,7 +34,7 @@ session_start();
               echo $_SESSION['username'];
               unset($_SESSION['username']);
             ?>"
-            placeholder="Introduce your Username or Email">
+            placeholder="Username or Email">
 
     </div>
     
@@ -44,7 +44,7 @@ session_start();
             id="exampleFormControlInput2" 
             name="password" 
             value=""
-            placeholder="Introduce your Password">
+            placeholder="Password">
     </div>
     <button type="submit" class="btn btn-success">Sign In</button>
   </form>

@@ -14,7 +14,7 @@ function test_input($data) {
 }
 function returnFormPage(){
     $_SESSION['form-data'] = $_POST;
-    header('Location: dashboard.php');
+    header('Location:' . getenv('HTTP_REFERER'));
     die();
   }
 $postData = []; //Associate array
@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         returnFormPage();
       }
       //CHECK SIZE
-      if($file["size"] < 604800){
+      if($file["size"] < 804800){
         $uploadCheck = true;
       }else{
         $uploadCheck = false;
@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         unset( $_SESSION['addFormErr']);
         unset($_SESSION['form-data']);
         $_SESSION['postSuccess'] = "Post added successfully.";
-        header('Location: dashboard.php');
+        header('Location: add-post.php');
         die();
       
       }else{
