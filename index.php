@@ -23,8 +23,8 @@ $featuredPost = getPosts("1");
       <div class="card-body">
           <h5 class="card-title" style="color:black;"><?php echo $featuredPost['title']?></h5>
           <p class="card-text" style="color:black;"><?php echo $featuredPost['body']?></p>
-          <a href="#" class="btn btn-primary">Category: <?php echo $featuredPost['category_id']?></a>
-          <a href="#" class="btn btn-primary">Author: <?php echo $featuredPost['author_id']?></a>
+          <a href="#" class="btn btn-primary"><?php echo implode(getNameCategoryFromId($featuredPost['category_id']))?></a>
+          <a href="#" class="btn btn-primary"> <?php echo implode(getNameUserFromId($featuredPost['author_id']))?></a>
           <a class="btn btn-primary" href="post-details.php?id=<?php echo $featuredPost['id']?>">Read more</a>
       </div>
     </div>
@@ -42,8 +42,17 @@ $featuredPost = getPosts("1");
           <div class="card-body">
             <h5 class="card-title" style="color:black;"><?php echo $value['title']?></h5>
             <p class="card-text" style="color:black;"><?php echo $value['body']?></p>
-            <a href="#" class="btn btn-primary">Category: <?php echo $value['category_id']?></a>
-            <a href="#" class="btn btn-primary">Author: <?php echo $value['author_id']?></a>
+            <a href="#" class="btn btn-primary">
+              <?php 
+                echo implode(getNameCategoryFromId($value['category_id'])); // "implodes" converts associative array in string
+              ?>
+            </a>
+            <a href="#" class="btn btn-primary">
+              <?php
+              $array = getNameUserFromId($value['author_id']);
+              echo $array['firstname'] . ' ' . $array['lastname'];
+              ?>
+            </a>
             <a class="btn btn-primary" href="post-details.php?id=<?php echo $value['id']?>">Read more</a>
           </div>
         </div>

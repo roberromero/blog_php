@@ -80,6 +80,8 @@ function test_input($data) {
           updatePost($postData);//Saves changes in the post in the data base
           unset( $_SESSION['addFormErr']);
           unset($_SESSION['form-data']);
+          $oldPhoto = './images/'. $_POST['oldThumbnail'];
+          unlink($oldPhoto);
           $_SESSION['postSuccess'] = "Post edited successfully.";
           header('Location:' . getenv('HTTP_REFERER'));
           die();

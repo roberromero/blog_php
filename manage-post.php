@@ -2,6 +2,7 @@
 include_once 'partials/header.php'; //PHP header CODE?
 require './config/constants.php';
 session_start();
+$categoriesData = getCategoriesData();//to get categories
 ?>
 
 
@@ -46,7 +47,15 @@ session_start();
           foreach($posts as $post => $value):?><!--LOOP TO SHOW POSTS-->
             <tr>
               <td><?php echo $value['title']?></td>
-              <td><?php echo $value['category_id']?></td>
+              <td>
+                <?php 
+                foreach($categoriesData as $category => $val):
+                  if($val['id'] == $value['category_id']){
+                    echo $val['title'];
+                  }
+                endforeach;
+                ?>
+              </td>
               <!--SENDING ID THROUGH BROWSER "href" ($_GET METHOD)-->
               <td><a class="btn btn-primary" href="manage-post-logic.php?actionPost=edit&id=<?php echo $value['id']?>">Edit</a></td>
               <td><a class="btn btn-danger" href="manage-post-logic.php?actionPost=delete&id=<?php echo $value['id']?>">Delete</a></td>

@@ -148,4 +148,28 @@ function deletePost($id,$filename){
   return $res;
 }
 
+
+function getCategoriesData(){
+  $conn = connectDatabase();
+  $sql = "SELECT * FROM categories";
+  $res = $conn->query($sql);
+  return mysqli_fetch_all($res, MYSQLI_ASSOC);
+  
+}
+
+//to get name from table "users" based on ID from table "posts"
+function getNameUserFromId($author_id){
+  $conn = connectDatabase();
+  $sql = "SELECT DISTINCT firstname, lastname FROM users INNER JOIN posts ON users.id =$author_id";
+  $res = $conn->query($sql);
+  return mysqli_fetch_assoc($res);
+}
+
+//to get name from table "categories" based on ID from table "posts"
+function getNameCategoryFromId($category_id){
+  $conn = connectDatabase();
+  $sql = "SELECT DISTINCT categories.title FROM categories INNER JOIN posts ON categories.id=$category_id";
+  $res = $conn->query($sql);
+  return mysqli_fetch_assoc($res);
+}
 ?>

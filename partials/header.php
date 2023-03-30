@@ -29,7 +29,7 @@ session_start();
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100">
         <li class="nav-item">
-          <a class="nav-link active" href="#">Blog</a>
+          <a class="nav-link active" href="probator.php">Blog</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" href="#">About</a>

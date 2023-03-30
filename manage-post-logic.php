@@ -4,6 +4,7 @@ require_once './config/database.php';
 
 $id = $_GET['id'];
 $post = getSpecificPostById($id);
+$categoriesData = getCategoriesData();//to get categories
 
 if($_GET['actionPost'] === "edit") {?>
     <!--EDIT HTML SECTION  -->  
@@ -42,9 +43,12 @@ if($_GET['actionPost'] === "edit") {?>
           <select class="form-select mb-3"
                   aria-label="Default select example"
                   name="category_id">
-            <option <?php ($post['category_id'] == "1") ? 'selected' : ''?> value="1">One</option>
-            <option <?php ($post['category_id'] == "2") ? 'selected' : ''?> value="2">Two</option>
-            <option <?php ($post['category_id'] == "3") ? 'selected' : ''?> value="3">Three</option>
+            <!-- <option <?php //?> value="2">Two</option> -->
+            <?php foreach($categoriesData as $category => $value):?>
+            <option value="<?php echo $value['id']?>" <?php ($_POST['category_id'] == $value['id'] ? 'selected' : '')?> >
+              <?php echo $value['title']?> 
+            </option>
+            <?php endforeach; ?>
           </select>
           <div class="mb-3">
             <input class="form-control"
@@ -58,6 +62,14 @@ if($_GET['actionPost'] === "edit") {?>
                     id="exampleFormControlInput7" 
                     name="id"
                     value="<?php echo $id?>"
+                    >
+           </div>
+           <div class="mb-3">
+            <input type="hidden"
+                    class="form-control"
+                    id="exampleFormControlInput7" 
+                    name="oldThumbnail"
+                    value="<?php echo $post['thumbnail']?>"
                     >
            </div>
           <div class="w-100">

@@ -1,7 +1,10 @@
 <?php 
 include_once 'partials/header.php'; //PHP header CODE?
 session_start();
-
+// echo '<pre>';
+// var_dump($_SESSION);
+// echo '</pre>';
+$categoriesData = getCategoriesData();//to get categories
 ?>
 
 
@@ -62,9 +65,9 @@ session_start();
               aria-label="Default select example"
               name="category_id">
         <option selected value="0">Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+        <?php foreach($categoriesData as $category => $value):?>
+          <option value="<?php echo $value['id']?>"><?php echo $value['title']?></option>
+        <?php endforeach; ?>
       </select>
       <div class="mb-3">
         <input class="form-control"
