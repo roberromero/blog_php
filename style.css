@@ -89,7 +89,36 @@ h5{
 .osw-details{
     font-weight: 200;
     letter-spacing: 1.3px;
-    font-size: 1rem;
+    font-size: .9rem;
+    color: black;
+}
+
+.post-details{
+    justify-content: center;
+    flex-direction: column;
+    align-items: baseline;
+    margin-left: 15px;
+    color: black;
+}
+.post-details__category-btn{
+    position: absolute;
+    right: 20px;
+    bottom: 25px;
+    border:2px solid black; 
+    color:black; 
+    height: 2.6rem;
+}
+
+.list-group-item.active {
+    z-index: 2;
+    color: var(--bs-list-group-active-color);
+    background-color:  #7272DB;
+    border-color:  #7272DB;
+}
+.btn-blog{
+    background-color:  #7272DB;
+    border-color:  #7272DB;
+    color: white;
 }
 @media only screen and (max-width: 992px) {
     .navbar-expand-lg .navbar-nav .nav-link{

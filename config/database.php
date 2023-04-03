@@ -117,7 +117,7 @@ function getPostsByAuthor($author_id){
 //To grab post info from ID
 function getSpecificPostById($id){
   $conn = connectDatabase();
-  $sql = "SELECT title, body, category_id, thumbnail, author_id FROM posts WHERE id=$id";
+  $sql = "SELECT title, body, category_id, thumbnail, author_id, date_time FROM posts WHERE id=$id";
   $res = $conn->query($sql);
   return mysqli_fetch_assoc($res);
 

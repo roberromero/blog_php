@@ -73,8 +73,8 @@ if($_GET['actionPost'] === "edit") {?>
                     >
            </div>
           <div class="w-100">
-            <button type="submit" class="btn btn-success">Modify Post</button>
-            <a class="btn btn-bd-primary" href="./manage-post.php" role="button" style="float: right;">Back</a>
+            <button type="submit" class="btn-blog btn">Modify Post</button>
+            <a class="btn-blog btn" href="./manage-post.php" role="button" style="float: right;">Back</a>
           </div>
       </form>
       

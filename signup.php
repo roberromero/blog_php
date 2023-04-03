@@ -95,7 +95,7 @@ session_start();//Needed to use $_SESSION global variable
             value="0"
             >
     </div>
-    <button type="submit" class="btn btn-success">Sign Up</button>
+    <button type="submit" class="btn" style="background-color:#7272DB; color:white;">Sign Up</button>
   </form>
   <small>Do you already have an account? <a href="<?php echo ROOT_URL?>signin.php">Sign in</a></small>
 </div>

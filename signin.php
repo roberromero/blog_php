@@ -46,7 +46,7 @@ session_start();
             value=""
             placeholder="Password">
     </div>
-    <button type="submit" class="btn btn-success">Sign In</button>
+    <button type="submit" class="btn" style="background-color:#7272DB; color:white;">Sign In</button>
   </form>
   <small>Don't you have an account? <a href="<?php echo ROOT_URL?>signup.php">Sign Up</a></small>
 </div>

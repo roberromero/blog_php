@@ -57,7 +57,7 @@ $categoriesData = getCategoriesData();//to get categories
                 ?>
               </td>
               <!--SENDING ID THROUGH BROWSER "href" ($_GET METHOD)-->
-              <td><a class="btn btn-bd-primary" href="manage-post-logic.php?actionPost=edit&id=<?php echo $value['id']?>">Edit</a></td>
+              <td><a class="btn-blog btn" href="manage-post-logic.php?actionPost=edit&id=<?php echo $value['id']?>">Edit</a></td>
               <td><a class="btn btn-danger" href="manage-post-logic.php?actionPost=delete&id=<?php echo $value['id']?>">Delete</a></td>
             </tr>
         <?php endforeach;} ?> 

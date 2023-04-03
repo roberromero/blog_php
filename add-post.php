@@ -75,7 +75,7 @@ $categoriesData = getCategoriesData();//to get categories
               name="thumbnail"
               id="formFile">
       </div>
-      <button type="submit" class="btn btn-success">Add New Post</button>
+      <button type="submit" class="btn-blog btn">Add New Post</button>
   </form>
 </div>
   <?php endif;?>
