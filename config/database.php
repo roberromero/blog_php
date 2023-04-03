@@ -172,4 +172,12 @@ function getNameCategoryFromId($category_id){
   $res = $conn->query($sql);
   return mysqli_fetch_assoc($res);
 }
+
+//to get avatar from ID
+function getAvatarFromId($id){
+  $conn = connectDatabase();
+  $sql = "SELECT avatar FROM users WHERE id=$id";
+  $res = $conn->query($sql);
+  return mysqli_fetch_assoc($res);
+}
 ?>

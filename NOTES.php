@@ -7,8 +7,8 @@
             <div class="card-body">
                 <h5 class="card-title" style="color:black;"><?php echo $value['title']?></h5>
                 <p class="card-text" style="color:black;"><?php echo $value['body']?></p>
-                <a href="#" class="btn btn-primary">Category: <?php echo $value['category_id']?></a>
-                <a href="#" class="btn btn-primary">Author: <?php echo $value['author_id']?></a>
+                <a href="#" class="btn btn-bd-primary">Category: <?php echo $value['category_id']?></a>
+                <a href="#" class="btn btn-bd-primary">Author: <?php echo $value['author_id']?></a>
             </div>
           </div>
       <?php endforeach;?>

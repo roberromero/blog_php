@@ -12,11 +12,11 @@ $post = getSpecificPostById($_GET['id']);
   <div class="card-body">
     <h5 class="card-title" style="color:black;"><?php echo $post['title']?></h5>
     <p class="card-text" style="color:black;"><?php echo $post['body']?></p>
-    <a href="#" class="btn btn-primary">Category: <?php echo $post['category_id']?></a>
-    <a href="#" class="btn btn-primary">Author: <?php echo $post['author_id']?></a>
+    <a href="#" class="btn btn-bd-primary">Category: <?php echo $post['category_id']?></a>
+    <a href="#" class="btn btn-bd-primary">Author: <?php echo $post['author_id']?></a>
   </div>
   </div>
 </div>
-<a href="./" class="btn btn-primary m-4" style="float:right;">Back</a>
+<a href="./" class="btn btn-bd-primary m-4" style="float:right; background-color:#7272DB;">Back</a>
 
 <?include 'partials/footer.php' //PHP footer CODE ?>

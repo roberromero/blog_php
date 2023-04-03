@@ -4,7 +4,7 @@ include_once 'partials/header.php'; //PHP header CODE?
 session_start();
 ?>
 
-<h2 class="text-center mt-5">SIGN IN</h2>
+<h1 class="text-center mt-5 title">SIGN IN</h1>
 <div class="container w-50">
 
   <div class="position-relative pb-5">

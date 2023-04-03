@@ -6,7 +6,7 @@ session_start();//Needed to use $_SESSION global variable
 ?>
 
 <!--HTML CODE-->
-<h2 class="text-center mt-5">SIGN UP</h2>
+<h1 class="text-center mt-5 title">SIGN UP</h1>
 
 
 <div class="container w-50">
