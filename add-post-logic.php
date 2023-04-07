@@ -1,6 +1,7 @@
 <?php 
 require_once 'config/database.php';
 session_start();
+var_dump($_POST);
 ?>
 
 
@@ -34,7 +35,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(empty($_POST['body'])){
             $_SESSION['addFormErr'] = "Body needed";
             returnFormPage();
-    }else{
+    }elseif(strlen($_POST['body']) > 2000){
+            $_SESSION['addFormErr'] = "2000 characters maximum";
+            returnFormPage();
+    }
+    else{
         $postData['body'] = test_input($_POST['body']);
     }
     if(empty($_POST['category_id'])){

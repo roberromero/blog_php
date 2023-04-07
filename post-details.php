@@ -34,6 +34,6 @@ $post = getSpecificPostById($_GET['id']);
   </div>
   </div>
 </div>
-<a href="./" class="btn btn-bd-primary m-4" style="float:right; background-color:#7272DB;">Back</a>
+<a href="./" class="btn btn-bd-primary m-4" style="background-color:#7272DB;position:relative;">Back</a>
 
 <?include 'partials/footer.php' //PHP footer CODE ?>

@@ -85,7 +85,16 @@ h5{
     font-weight: 300;
     letter-spacing: 1.8px;
     font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
+/* #osw-add{
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-around !important;
+    width: 50% !important;
+}  */
 .osw-details{
     font-weight: 200;
     letter-spacing: 1.3px;
@@ -120,6 +129,10 @@ h5{
     border-color:  #7272DB;
     color: white;
 }
+footer{
+    margin-top: 100rem;
+}
+
 @media only screen and (max-width: 992px) {
     .navbar-expand-lg .navbar-nav .nav-link{
         padding: 15px 0;
@@ -128,4 +141,5 @@ h5{
     .navbar-brand{
         display: none;
     }
+
   }

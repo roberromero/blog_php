@@ -8,7 +8,6 @@ $categoriesData = getCategoriesData();//to get categories
 
 <?php if (isset($_SESSION['user-data'])):?>
 
-  <div class="container">
     <div class="container mt-3">
       <div class="list-group" id="manageOptions">
         <a  class="list-group-item list-group-item-action active"
@@ -57,13 +56,14 @@ $categoriesData = getCategoriesData();//to get categories
                 ?>
               </td>
               <!--SENDING ID THROUGH BROWSER "href" ($_GET METHOD)-->
-              <td><a class="btn-blog btn" href="manage-post-logic.php?actionPost=edit&id=<?php echo $value['id']?>">Edit</a></td>
+              <td><a class="btn-blog btn-outline-light btn" href="manage-post-logic.php?actionPost=edit&id=<?php echo $value['id']?>">Edit</a></td>
               <td><a class="btn btn-danger" href="manage-post-logic.php?actionPost=delete&id=<?php echo $value['id']?>">Delete</a></td>
             </tr>
         <?php endforeach;} ?> 
       </tbody>
     </table>
-  </div>
   <?php endif;?>
 
-<?php include 'partials/footer.php' //PHP footer CODE ?>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>

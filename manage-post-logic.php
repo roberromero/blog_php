@@ -73,8 +73,8 @@ if($_GET['actionPost'] === "edit") {?>
                     >
            </div>
           <div class="w-100">
-            <button type="submit" class="btn-blog btn">Modify Post</button>
-            <a class="btn-blog btn" href="./manage-post.php" role="button" style="float: right;">Back</a>
+            <button type="submit" class="btn-blog btn-outline-light btn">Modify Post</button>
+            <a class="btn-blog btn-outline-light btn" href="./manage-post.php" role="button" style="float: right;">Back</a>
           </div>
       </form>
       
@@ -85,6 +85,6 @@ if($_GET['actionPost'] === "edit") {?>
     header('Location:' . getenv('HTTP_REFERER'));
     die();
   } ?> 
-<?php 
-include 'partials/footer.php'; //PHP footer CODE
-?>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -75,9 +75,11 @@ $categoriesData = getCategoriesData();//to get categories
               name="thumbnail"
               id="formFile">
       </div>
-      <button type="submit" class="btn-blog btn">Add New Post</button>
+      <button type="submit" class="btn-blog btn-outline-light btn">Add New Post</button>
   </form>
 </div>
   <?php endif;?>
 
-<?php include 'partials/footer.php' //PHP footer CODE ?>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -34,12 +34,13 @@ $featuredPost = getPosts("1");
    <h1 class="m-5 title">HOME PAGE</h1> 
    <!--LOOP featured post-->
    
-   <div class="container" style="max-width:48rem;">
-    <div class="card text-center" >
+   <div class="pad-0 container text-center p-5 ">
+    <div class="card text-center d-flex flex-column flex-lg-row" >
       <div>
-        <img src="./images/<?php echo $featuredPost['thumbnail'] ?>" class="card-img-top" style="height: 28em; object-fit:cover;" alt="...">
+        <img src="./images/<?php echo $featuredPost['thumbnail'] ?>" class="card-img-top" style="height: 35em; object-fit:cover;" alt="...">
       </div>
-      <div class="card-body osw-content">
+      <div class="container-lg card-body osw-content w-50">
+          <div class="d-flex flex-column h-100 justify-content-around">
           <h5 class="card-title" style="color:black; height: 4rem;"><?php echo $featuredPost['title']?></h5>
           <p class="card-text text-blog-hidden" style="color:black; margin: 25px 0 15px 0;"><?php echo $featuredPost['body']?></p>
           <a href="#" class="btn" style="border:2px solid; color:black;"><?php echo implode(getNameCategoryFromId($featuredPost['category_id']))?></a>
@@ -57,6 +58,7 @@ $featuredPost = getPosts("1");
               <p style="color:black;"><?php echo $featuredPost['date_time'] ?></p>
             </div>
             <a class="btn btn-bd-primary" href="post-details.php?id=<?php echo $featuredPost['id']?>">more</a>
+          </div>
           </div>
       </div>
     </div>
@@ -104,10 +106,16 @@ $featuredPost = getPosts("1");
    </div>
 <!--////////////////////////////////////////////////////////////-->
 </div>
-<?php 
-$categories = getCategoriesData();
-foreach($categories as $category => $v):?>
-  <a href="#" class="btn-blog btn"><?php echo $v['title']?></a>
-<?php endforeach;?>
+<section class="cat-section m-5">
+ <div class="container text-center" style="max-width:640px;">
+  <h2 class="m-5" style="font-family: 'Oswald', sans-serif; font-size:2.8rem;">Categories</h2>
+  <?php 
+      $categories = getCategoriesData();
+      foreach($categories as $category => $v):?>
+      <a href="#!" class="btn-blog btn-outline-light btn p-3 m-1"><?php echo $v['title']?></a>
+      <?php endforeach;?>
+ </div>
+</section>
+
 
 <?include 'partials/footer.php' //PHP footer CODE ?>

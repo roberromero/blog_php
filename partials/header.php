@@ -7,11 +7,12 @@
     <title>Blog PHP</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Raleway:ital,wght@0,300;0,400;0,500;1,200;1,400;1,500&display=swap" rel="stylesheet">
 </head>
-<body class="body">
+<body class="body d-flex flex-column min-vh-100">
 
 <?php
 require 'config/database.php'; //FUNCTIONS TO ACCESS DATABASE
@@ -32,13 +33,13 @@ session_start();
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100">
         <li class="nav-item">
-          <a class="nav-link active" href="probator.php">Blog</a>
+          <a class="nav-link active" href="#!">Blog</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="#">About</a>
+          <a class="nav-link active" href="#!">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="#">Contact</a>
+          <a class="nav-link active" href="#!">Contact</a>
         </li>
         <?php if(!isset($_SESSION['user-data'])) : ?><!--it doesn't show when signed in-->
           <li class="nav-item">
