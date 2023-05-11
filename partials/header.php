@@ -69,8 +69,8 @@ session_start();
 <script>
 const dropDownButton = document.getElementById('dropDownButton');
 const dropDownPersonal = document.getElementById('navbarNavDarkDropdown');
-dropDownButton.addEventListener('click', displayNone);
-function displayNone(){
+dropDownButton.addEventListener('click', function displayNone(){
   dropDownPersonal.classList.toggle('d-none');
-}
+});
+
 </script>

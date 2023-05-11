@@ -1,7 +1,7 @@
 <?php
 include_once 'partials/header.php'; //PHP header CODE?
-require './config/constants.php';
-session_start();
+// require './config/constants.php';
+// session_start();
 $categoriesData = getCategoriesData();//to get categories
 ?>
 

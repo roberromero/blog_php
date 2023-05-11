@@ -1,6 +1,6 @@
 <?php 
 include_once 'partials/header.php'; //PHP header CODE?
-session_start();
+// session_start();
 // echo '<pre>';
 // var_dump($_SESSION);
 // echo '</pre>';
@@ -31,14 +31,18 @@ $categoriesData = getCategoriesData();//to get categories
     </div>
 <div class="container mt-3" id="createTable">
   <div class="position-relative pb-5">
-    <div class="position-absolute w-100 alert alert-danger <?php echo !$_SESSION['addFormErr'] ? 'invisible' : '' ?>" role="alert"> 
-      <?php echo $_SESSION['addFormErr'];
+    <div class="position-absolute w-100 alert alert-danger <?php echo !isset($_SESSION['addFormErr']) ? 'invisible' : '' ?>" role="alert"> 
+      <?php if(isset($_SESSION['addFormErr'])){
+            echo $_SESSION['addFormErr'];
             unset($_SESSION['addFormErr']);
+      }
       ?>
     </div>
-    <div class="position-absolute w-100 alert alert-success <?php echo !$_SESSION['postSuccess'] ? 'invisible' : '' ?>" id="postAddedAlert" role="alert">
-    <?php echo $_SESSION['postSuccess'];
-          unset($_SESSION['postSuccess']);
+    <div class="position-absolute w-100 alert alert-success <?php echo !isset($_SESSION['postSuccess']) ? 'invisible' : '' ?>" id="postAddedAlert" role="alert">
+    <?php if(isset($_SESSION['postSuccess'])){
+      echo $_SESSION['postSuccess'];
+      unset($_SESSION['postSuccess']);
+    }
     ?>
     </div>
   </div>
@@ -53,13 +57,13 @@ $categoriesData = getCategoriesData();//to get categories
               class="form-control"
               id="exampleFormControlInput1" 
               name="title" 
-              value="<?php echo $_SESSION['form-data']['title']?>"
+              value="<?php if(isset($_SESSION['form-data']['title'])){echo $_SESSION['form-data']['title'];}?>"
               placeholder="Introduce your first name">
       </div>
       <div class="mb-3">
         <textarea class="form-control"
                   name="body" 
-                  rows="3"><?php echo $_SESSION['form-data']['body']?></textarea>
+                  rows="3"><?php if(isset($_SESSION['form-data']['body'])) echo $_SESSION['form-data']['body']?></textarea>
       </div>
       <select class="form-select mb-3"
               aria-label="Default select example"

@@ -1,23 +1,30 @@
 <?php
-
 include_once 'partials/header.php'; //PHP header CODE?
-session_start();
+
 ?>
 
 <h1 class="text-center mt-5 title">SIGN IN</h1>
 <div class="container w-50">
 
   <div class="position-relative pb-5">
-    <div class=" position-absolute w-100 alert alert-danger <?php echo !$_SESSION['formErr'] ? 'invisible' : '' ?>" role="alert">
-        <?php 
-        echo $_SESSION['formErr'];
-        unset($_SESSION['formErr']);
+    <div class=" position-absolute w-100 alert alert-danger <?php 
+    if(isset($_SESSION['formErr'])){ echo !$_SESSION['formErr'] ? 'invisible' : '';}else{echo 'invisible';}  
+    ?>" 
+    role="alert">
+        <?php
+        if(isset($_SESSION['formErr'])){
+          echo $_SESSION['formErr'];
+          unset($_SESSION['formErr']);
+        }
+        
         ?>
     </div>
-    <div class=" position-absolute w-100 alert alert-success <?php echo !$_SESSION['formValid'] ? 'invisible' : '' ?>" role="alert">
-        <?php 
+    <div class=" position-absolute w-100 alert alert-success <?php if(isset($_SESSION['formValid'])){echo !$_SESSION['formValid'] ? 'invisible' : '';}else{echo 'invisible';} ?>" role="alert">
+        <?php
+        if(isset($_SESSION['formValid'])){
         echo $_SESSION['formValid'];
         unset($_SESSION['formValid']);
+        }
         ?>
     </div>
   </div>
@@ -31,8 +38,12 @@ session_start();
             id="exampleFormControlInput1" 
             name="username" 
             value="<?php 
-              echo $_SESSION['username'];
-              unset($_SESSION['username']);
+              if(isset($_SESSION['username'])){
+                echo $_SESSION['username'];
+                unset($_SESSION['username']);
+              }else{
+                echo "";
+              }
             ?>"
             placeholder="Username or Email">
 

@@ -10,14 +10,18 @@ if($_GET['actionPost'] === "edit") {?>
     <!--EDIT HTML SECTION  -->  
     <div class="container mt-5">
         <div class="position-relative pb-5">
-            <div class="position-absolute w-100 alert alert-danger <?php echo !$_SESSION['addFormErr'] ? 'invisible' : '' ?>" role="alert"> 
-            <?php echo $_SESSION['addFormErr'];
-                    unset($_SESSION['addFormErr']);
+            <div class="position-absolute w-100 alert alert-danger <?php echo !isset($_SESSION['addFormErr']) ? 'invisible' : '' ?>" role="alert"> 
+            <?php if(isset($_SESSION['addFormErr'])){
+              echo $_SESSION['addFormErr'];
+              unset($_SESSION['addFormErr']);
+            }
             ?>
             </div>
-            <div class="position-absolute w-100 alert alert-success <?php echo !$_SESSION['postSuccess'] ? 'invisible' : '' ?>" id="postAddedAlert" role="alert">
-            <?php echo $_SESSION['postSuccess'];
-                unset($_SESSION['postSuccess']);
+            <div class="position-absolute w-100 alert alert-success <?php echo !isset($_SESSION['postSuccess']) ? 'invisible' : '' ?>" id="postAddedAlert" role="alert">
+            <?php if(isset($_SESSION['postSuccess'])){
+              echo $_SESSION['postSuccess'];
+              unset($_SESSION['postSuccess']);
+            }
             ?>
             </div>
         </div>

@@ -1,8 +1,7 @@
 <?php
 
 include 'partials/header.php'; //PHP header CODE?
-session_start();//Needed to use $_SESSION global variable
-
+// session_start();//Needed to use $_SESSION global variable
 ?>
 
 <!--HTML CODE-->
@@ -12,11 +11,23 @@ session_start();//Needed to use $_SESSION global variable
 <div class="container w-50">
 
   <div class="position-relative pb-5">
-    <div class="position-absolute w-100 alert alert-danger <?php echo !$_SESSION['formError'] ? 'invisible' : '' ?>" role="alert"> 
-      <?php echo $_SESSION['formError'] ?>
+    <div class="position-absolute w-100 alert alert-danger  <?php echo (!isset($_SESSION['formError'])) ? 'invisible' : '' ?>" role="alert"> 
+      <?php 
+      if(!empty($_SESSION)){
+        if(isset($_SESSION['formError'])){
+          echo $_SESSION['formError'];
+        }
+      } 
+      ?>
     </div>
-    <div class="position-absolute w-100 alert alert-success <?php echo !$_SESSION['formSuccess'] ? 'invisible' : '' ?>" role="alert">
-    <?php echo $_SESSION['formSuccess'] ?>
+    <div class="position-absolute w-100 alert alert-success <?php echo (!isset($_SESSION['formSuccess'])) ? 'invisible' : '' ?>" role="alert">
+    <?php
+     if(!empty($_SESSION)){
+      if(isset($_SESSION['formSuccess'])){
+        echo $_SESSION['formSuccess'];
+      }
+    }  
+    ?>
     </div>
   </div>
   <form action="signup-logic.php" 
@@ -30,7 +41,7 @@ session_start();//Needed to use $_SESSION global variable
             class="form-control"
             id="exampleFormControlInput1" 
             name="firstname" 
-            value="<?php echo $_SESSION['signup-data']['firstname']; ?>"
+            value="<?php if(isset($_SESSION['signup-data']['firstname'])){echo $_SESSION['signup-data']['firstname'];} ?>"
             placeholder="First name">
 
     </div>
@@ -41,7 +52,7 @@ session_start();//Needed to use $_SESSION global variable
             class="form-control"
             id="exampleFormControlInput2" 
             name="lastname" 
-            value="<?php echo $_SESSION['signup-data']['lastname']; ?>"
+            value="<?php if(isset($_SESSION['signup-data']['lastname'])){echo $_SESSION['signup-data']['lastname'];} ?>"
             placeholder="Last name">
     </div>
     <div class="mb-3">
@@ -50,7 +61,7 @@ session_start();//Needed to use $_SESSION global variable
             class="form-control"
             id="exampleFormControlInput3" 
             name="username" 
-            value="<?php echo $_SESSION['signup-data']['username']; ?>"
+            value="<?php if(isset($_SESSION['signup-data']['username'])){echo $_SESSION['signup-data']['username'];} ?>"
             placeholder="Username">
     </div>
     <div class="mb-3">
@@ -59,7 +70,7 @@ session_start();//Needed to use $_SESSION global variable
             class="form-control"
             id="exampleFormControlInput4" 
             name="email" 
-            value="<?php echo $_SESSION['signup-data']['email']; ?>" 
+            value="<?php if(isset($_SESSION['signup-data']['email'])){echo $_SESSION['signup-data']['email'];} ?>" 
             placeholder="Email address">
     </div>
     <div class="mb-3">

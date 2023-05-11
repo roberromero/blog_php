@@ -34,7 +34,8 @@ $featuredPost = getPosts("1");
    <h1 class="m-5 title">HOME PAGE</h1> 
    <!--LOOP featured post-->
    
-   <div class="pad-0 container text-center p-5 ">
+   <?php if($featuredPost){ ?>
+    <div class="pad-0 container text-center p-5 ">
     <div class="card text-center d-flex flex-column flex-lg-row" >
       <div>
         <img src="./images/<?php echo $featuredPost['thumbnail'] ?>" class="card-img-top" style="height: 35em; object-fit:cover;" alt="...">
@@ -63,6 +64,11 @@ $featuredPost = getPosts("1");
       </div>
     </div>
    </div>
+   <?php }else{?>
+      <h2>There is not featured post</h2>
+    <?php }?>
+
+
    <!--LOOP posts-->
    <div class="pad-0 container text-center p-5 ">
    <div class="row">
